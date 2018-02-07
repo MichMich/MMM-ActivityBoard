@@ -53,6 +53,14 @@ module.exports = NodeHelper.create({
 			baudRate: this.config.baudRate
 		})
 
+		this.port.open(err => {
+			if (err) {
+				console.log("Error opening port: ", err.message);
+			} else {
+				console.log("Opening port");
+			}
+		});
+
 		this.port.on("data", function (data) {
 			this.dataBuffer += data
 			var message = null
