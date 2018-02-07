@@ -10,7 +10,10 @@
 Module.register("MMM-ActivityBoard",{
 
 	// Default module config.
-	defaults: {},
+	defaults: {
+		port: "/dev/tty.AMA0",
+		baudRate: 115200
+	},
 
 	// Create a domObject on initialization.
 	// This way we can re-use it whenever we run getDom.
@@ -52,5 +55,12 @@ Module.register("MMM-ActivityBoard",{
 	// Forward the socket notification to the Vue app.
 	socketNotificationReceived: function(notification, payload) {
 		window.ActivityBoardVue.$emit(notification, payload)
+		if (notification === "auto_off") {
+			if (payload) {
+				this.hide(1000)
+			} else {
+				this.show(1000)
+			}
+		}
 	}
 });
