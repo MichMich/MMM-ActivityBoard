@@ -7,6 +7,6 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 window.ActivityBoardVue = new Vue({
-  components: { App },
-  template: '<App/>'
+	components: { App },
+	template: '<App/>'
 }).$mount()
