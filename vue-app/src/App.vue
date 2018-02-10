@@ -61,7 +61,17 @@ export default {
 		return {
 			buttons: {},
 			slider: 0,
-			logs: []
+			logs: [],
+			sounds: {
+				'MAIN_SW_1': {
+					file: 'radioscatter.wav',
+					loop: true
+				},
+				'MAIN_SW_2': {
+					file: 'beep.wav',
+					loop: true
+				}
+			}
 		}
 	},
 	methods: {
@@ -77,14 +87,44 @@ export default {
 			}
 		},
 		toggle (identifier) {
-			this.$set(this.buttons, identifier, !this.buttons[identifier])
-			if (this.buttons[identifier]) {
-				this.playSound()
-			}
+			var buttons = Object.assign({}, this.buttons)
+			buttons[identifier] = !buttons[identifier]
+			this.buttons = buttons
 		},
-		playSound () {
-			var audio = new Audio(require('./assets/robotic.wav'))
-			audio.play()
+		playSound (identifier) {
+			if (!this.sounds[identifier]) return
+
+			var sound = this.sounds[identifier]
+
+			var player
+			if (sound.loop) {
+				if (sound.player) {
+					player = sound.player
+				} else {
+					player = new Audio(require('./assets/' + this.sounds[identifier].file))
+					player.loop = true
+					sound.player = player
+				}
+			} else {
+				player = new Audio(require('./assets/' + this.sounds[identifier].file))
+			}
+
+			player.currentTime = 0
+			player.play()
+		},
+		stopSound (identifier) {
+			if (!this.sounds[identifier]) return
+
+			var sound = this.sounds[identifier]
+
+			if (sound.player) sound.player.pause()
+		},
+		buttonChanged (identifier) {
+			if (this.buttons[identifier]) {
+				this.playSound(identifier)
+			} else {
+				this.stopSound(identifier)
+			}
 		}
 	},
 	mounted () {
@@ -104,9 +144,9 @@ export default {
 		buttons: {
 			handler (to, from) {
 				Object.keys(to).forEach(key => {
-					console.log(to, from)
 					if (to[key] !== from[key]) {
 						console.log(key)
+						this.buttonChanged(key)
 					}
 				})
 			},

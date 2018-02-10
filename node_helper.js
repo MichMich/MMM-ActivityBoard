@@ -4,10 +4,10 @@
  * By Michael Teeuw http://michaelteeuw.nl
  * MIT Licensed.
  */
-
+var express = require("express");
 var NodeHelper = require("node_helper");
-var SerialPort = require("serialport");
-var Readline = SerialPort.parsers.Readline;
+// var SerialPort = require("serialport");
+// var Readline = SerialPort.parsers.Readline;
 
 module.exports = NodeHelper.create({
 	// Subclass start method.
@@ -34,35 +34,38 @@ module.exports = NodeHelper.create({
 
 	start: function() {
 		console.log("Starting module: " + this.name);
+		console.log("From: " + "/static/media")
+		console.log("To: " + this.path + "/vue-app/static/media")
+		this.expressApp.use("/static/media", express.static(this.path + "/vue-app/dist/static/media"));
 	},
 
 	openSerialPort: function() {
 		console.log("Open serial port: " + this.config.port + ", Baud rate: " + this.config.baudRate)
-		this.port = SerialPort(this.config.port, {
-			baudRate: this.config.baudRate
-		})
+		// this.port = SerialPort(this.config.port, {
+		// 	baudRate: this.config.baudRate
+		// })
 
-		this.port.on('open', () => {
-			this.port.write('main screen turn on', function(err) {
-    				if (err) {
-      					return console.log('Error on write: ', err.message);
-    				}
-    				console.log('message written');
-  			});
-		});
+		// this.port.on('open', () => {
+		// 	this.port.write('main screen turn on', function(err) {
+    	// 			if (err) {
+      	// 				return console.log('Error on write: ', err.message);
+    	// 			}
+    	// 			console.log('message written');
+  		// 	});
+		// });
 
-		const parser = this.port.pipe(new Readline());
-		parser.on("data", (data) => {
-			var message;
+		// const parser = this.port.pipe(new Readline());
+		// parser.on("data", (data) => {
+		// 	var message;
 
-			try {
-				message = JSON.parse(data);		
-			} catch (e) {
-				console.log("Unusable data from dataBuffer: " + data);
-			};
+		// 	try {
+		// 		message = JSON.parse(data);		
+		// 	} catch (e) {
+		// 		console.log("Unusable data from dataBuffer: " + data);
+		// 	};
 
-			this.handleMessage(message);
-		});
+		// 	this.handleMessage(message);
+		// });
 
 	},
 

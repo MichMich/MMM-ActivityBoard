@@ -11,7 +11,7 @@ Module.register("MMM-ActivityBoard",{
 
 	// Default module config.
 	defaults: {
-		port: "/dev/tty.AMA0",
+		port: "/dev/ttyAMA0",
 		baudRate: 115200
 	},
 
