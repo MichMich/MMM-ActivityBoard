@@ -132,7 +132,7 @@ export default {
       line-height: 60px;
       text-align: center;
       margin-right: 10px;
-      transition: background-color 0.25s, border-color 0.1s;
+      //transition: background-color 0.25s, border-color 0.1s;
       &.is-active {
         border-color: #ffffff;
         background-color: #666666;
