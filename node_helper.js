@@ -7,6 +7,7 @@
 
 var NodeHelper = require("node_helper");
 var SerialPort = require("serialport");
+var Readline = SerialPort.parsers.Readline;
 
 module.exports = NodeHelper.create({
 	// Subclass start method.
@@ -33,18 +34,6 @@ module.exports = NodeHelper.create({
 
 	start: function() {
 		console.log("Starting module: " + this.name);
-		// setInterval(() => {
-		// 	this.handleMessage({"buttons": Math.floor((Math.random() * 65536))})
-		// }, 500)
-
-		// setInterval(() => {
-		// 	this.handleMessage({"slider": Math.floor((Math.random() * 1024))})
-		// }, 1734)
-
-		// setInterval(() => {
-		// 	this.handleMessage({"auto_off": Math.round(Math.random())})
-		// }, 3000)
-
 	},
 
 	openSerialPort: function() {
@@ -53,33 +42,32 @@ module.exports = NodeHelper.create({
 			baudRate: this.config.baudRate
 		})
 
-		this.port.open(err => {
-			if (err) {
-				console.log("Error opening port: ", err.message);
-			} else {
-				console.log("Opening port");
-			}
+		this.port.on('open', () => {
+			this.port.write('main screen turn on', function(err) {
+    				if (err) {
+      					return console.log('Error on write: ', err.message);
+    				}
+    				console.log('message written');
+  			});
 		});
 
-		this.port.on("data", function (data) {
-			this.dataBuffer += data
-			var message = null
+		const parser = this.port.pipe(new Readline());
+		parser.on("data", (data) => {
+			var message;
 
 			try {
-				message = JSON.parse(this.dataBuffer)
-			} catch(e) {
-				// not a full json string yet
-			}
+				message = JSON.parse(data);		
+			} catch (e) {
+				console.log("Unusable data from dataBuffer: " + data);
+			};
 
-			if (message) {
-				this.dataBuffer = null
-				this.handleMessage(message)
-			}
+			this.handleMessage(message);
 		});
+
 	},
 
 	handleMessage: function(message) {
-		console.log(message)
+		if (!message || typeof message !== 'object') return;
 
 		if (typeof message.buttons !== "undefined") {
 			this.handleButtonChange(message.buttons)
