@@ -47,45 +47,45 @@ export default {
 					name: 'Dinotrux',
 					avatar: 'dinotrux.jpg',
 					sounds: {
-						ARCADE_1: {file: 'test-sounds/teleport.wav'},
-						ARCADE_2: {file: 'test-sounds/laser.wav'},
-						ARCADE_3: {file: 'test-sounds/menu1.wav'}
+						ARCADE_1: {file: 'enzo-sounds/dinotrux1.wav'},
+						ARCADE_2: {file: 'enzo-sounds/dinotrux2.wav'},
+						ARCADE_3: {file: 'enzo-sounds/dinotrux3.wav'}
 					}
 				},
 				{
 					name: 'Fien & Teun',
 					avatar: 'fienteun.jpg',
 					sounds: {
-						ARCADE_1: {file: 'test-sounds/teleport.wav'},
-						ARCADE_2: {file: 'test-sounds/laser.wav'},
-						ARCADE_3: {file: 'test-sounds/menu1.wav'}
+						ARCADE_1: {file: 'enzo-sounds/fienteun1.wav'},
+						ARCADE_2: {file: 'enzo-sounds/fienteun2.wav'},
+						ARCADE_3: {file: 'enzo-sounds/fienteun3.wav'}
 					}
 				},
 				{
 					name: 'Pieter Konijn',
 					avatar: 'konijn.jpg',
 					sounds: {
-						ARCADE_1: {file: 'test-sounds/teleport.wav'},
-						ARCADE_2: {file: 'test-sounds/laser.wav'},
-						ARCADE_3: {file: 'test-sounds/menu1.wav'}
+						ARCADE_1: {file: 'enzo-sounds/konijn1.wav'},
+						ARCADE_2: {file: 'enzo-sounds/konijn2.wav'},
+						ARCADE_3: {file: 'enzo-sounds/konijn3.wav'}
 					}
 				},
 				{
 					name: 'Brandweerman Sam',
 					avatar: 'sam.jpg',
 					sounds: {
-						ARCADE_1: {file: 'test-sounds/teleport.wav'},
-						ARCADE_2: {file: 'test-sounds/laser.wav'},
-						ARCADE_3: {file: 'test-sounds/menu1.wav'}
+						ARCADE_1: {file: 'enzo-sounds/sam1.wav'},
+						ARCADE_2: {file: 'enzo-sounds/sam2.wav'},
+						ARCADE_3: {file: 'enzo-sounds/sam3.wav'}
 					}
 				},
 				{
 					name: 'Kleine Rode Traktor',
 					avatar: 'traktor.jpg',
 					sounds: {
-						ARCADE_1: {file: 'test-sounds/teleport.wav'},
-						ARCADE_2: {file: 'test-sounds/laser.wav'},
-						ARCADE_3: {file: 'test-sounds/menu1.wav'}
+						ARCADE_1: {file: 'enzo-sounds/traktor1.wav'},
+						ARCADE_2: {file: 'enzo-sounds/traktor2.wav'},
+						ARCADE_3: {file: 'enzo-sounds/traktor3.wav'}
 					}
 				}
 			]
