@@ -37,6 +37,7 @@ module.exports = NodeHelper.create({
 		console.log("From: " + "/static/media")
 		console.log("To: " + this.path + "/vue-app/static/media")
 		this.expressApp.use("/static/media", express.static(this.path + "/vue-app/dist/static/media"));
+		this.expressApp.use("/static/img", express.static(this.path + "/vue-app/dist/static/img"));
 	},
 
 	openSerialPort: function() {
