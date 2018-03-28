@@ -30,8 +30,8 @@ export default {
 					avatar: 'buurmanbuurman.jpg',
 					sounds: {
 						ARCADE_1: {file: 'enzo-sounds/ajetoo.wav'},
-						ARCADE_2: {file: 'test-sounds/laser.wav'},
-						ARCADE_3: {file: 'test-sounds/menu1.wav'}
+						ARCADE_2: {file: 'enzo-sounds/buurman.wav'},
+						ARCADE_3: {file: 'enzo-sounds/he.wav'}
 					}
 				},
 				{
