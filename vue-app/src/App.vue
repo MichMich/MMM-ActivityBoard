@@ -22,7 +22,7 @@ export default {
 		return {
 			buttons: {},
 			showInterfaceSelector: false,
-			activeInterface: 1,
+			activeInterface: 2,
 			interfaces: [
 				'System Disabled',
 				'Debug Console',
