@@ -55,14 +55,14 @@ export default {
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background-color: rgba(0,0,0,0.75);
+		background-color: rgba(0,0,0,0.9);
 		pointer-events: none;
 		display:flex;
 		flex-direction: column;
 		justify-content:  center;
 		.popup {
 			border: 2px solid white;
-			background-color: rgba(0,0,0,0.75);
+			background-color: rgba(0,0,0,0.9);
 			.interface {
 				text-align: center;
 				background-color: rgba(255,255,255,0.1);
