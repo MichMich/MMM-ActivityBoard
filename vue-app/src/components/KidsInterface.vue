@@ -38,9 +38,9 @@ export default {
 					name: 'Cars',
 					avatar: 'cars.jpg',
 					sounds: {
-						ARCADE_1: {file: 'test-sounds/teleport.wav'},
-						ARCADE_2: {file: 'test-sounds/laser.wav'},
-						ARCADE_3: {file: 'test-sounds/menu1.wav'}
+						ARCADE_1: {file: 'enzo-sounds/cars1.wav'},
+						ARCADE_2: {file: 'enzo-sounds/cars2.wav'},
+						ARCADE_3: {file: 'enzo-sounds/cars3.wav'}
 					}
 				},
 				{
