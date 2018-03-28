@@ -1,7 +1,7 @@
 <template>
 	<div class="interface-selector">
 		<div class="popup">
-			<div class="interface" v-for="(interfaceName, index) in interfaces" :key="index" :class="{'is-active': value==index}">
+			<div class="interface" v-for="(interfaceName, index) in interfaces" :key="index" :class="{'is-active': selectedValue==index}">
 				{{interfaceName}}
 			</div>
 		</div>
@@ -19,15 +19,16 @@ export default {
 	},
 	data () {
 		return {
-			buttons: {}
+			buttons: {},
+			selectedValue: this.value
 		}
 	},
 	methods: {
 		checkRotation () {
 			if (this.buttons.ROTARY_B) {
-				this.$emit('input', (this.value + 1) % this.interfaces.length)
+				this.selectedValue = (this.selectedValue + 1) % this.interfaces.length
 			} else {
-				this.$emit('input', this.value > 0 ? this.value - 1 : this.interfaces.length - 1)
+				this.selectedValue = this.selectedValue > 0 ? this.selectedValue - 1 : this.interfaces.length - 1
 			}
 		}
 	},
@@ -38,6 +39,9 @@ export default {
 		this.$parent.$on('button_changed', payload => {
 			if (payload.name === 'ROTARY_A' && payload.state) {
 				this.checkRotation()
+			}
+			if (payload.name === 'ROTARY_BUTTON' && payload.state) {
+				this.$emit('input', this.selectedValue)
 			}
 		})
 	}

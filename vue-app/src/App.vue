@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
-		<test-interface @buttons="onButtons" v-if="activeInterface == 0"></test-interface>
-		<kids-interface @buttons="onButtons" v-if="activeInterface == 1"></kids-interface>
+		<test-interface @buttons="onButtons" v-if="activeInterface == 1"></test-interface>
+		<kids-interface @buttons="onButtons" v-if="activeInterface == 2"></kids-interface>
 		<interface-selector v-if="showInterfaceSelector" v-model="activeInterface" :interfaces="interfaces"></interface-selector>
 		<!-- <a @click="activeInterface = (activeInterface == 0) ? 1 : 0">switch</a> -->
 	</div>
@@ -24,7 +24,8 @@ export default {
 			showInterfaceSelector: false,
 			activeInterface: 1,
 			interfaces: [
-				'Debug Interface',
+				'System Disabled',
+				'Debug Console',
 				'Enzo\'s Interface'
 			]
 		}
@@ -64,6 +65,9 @@ export default {
 				})
 			},
 			deep: true
+		},
+		activeInterface (to, from) {
+			this.showInterfaceSelector = false
 		}
 	}
 }
