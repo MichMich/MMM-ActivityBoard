@@ -107,6 +107,7 @@ export default {
 		}
 	},
 	mounted () {
+		this.$parent.$off()
 		this.sounds = this.friend.sounds
 		this.$parent.$on('buttons', payload => {
 			this.buttons = payload
@@ -146,14 +147,6 @@ export default {
 	.kids-interface {
 		text-align: center;
 	}
-	.header {
-		background-color: white;
-		color: black;
-		text-align: center;
-		margin-bottom: 4px;
-		line-height: 60px;
-		font-size: 40px;
-	}
 	.image-holder {
 		border: 4px solid white;
 		background-size: cover;
@@ -161,6 +154,7 @@ export default {
 		background-repeat: no-repeat;
 		border-radius: 1000px;
 		margin: 20px;
+		margin-top: 50px;
 	}
 	.image-holder:after {
 		content: "";

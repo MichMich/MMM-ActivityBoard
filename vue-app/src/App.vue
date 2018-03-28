@@ -3,6 +3,7 @@
 		<test-interface @buttons="onButtons" v-if="activeInterface == 0"></test-interface>
 		<kids-interface @buttons="onButtons" v-if="activeInterface == 1"></kids-interface>
 		<interface-selector v-if="showInterfaceSelector" v-model="activeInterface" :interfaces="interfaces"></interface-selector>
+		<!-- <a @click="activeInterface = (activeInterface == 0) ? 1 : 0">switch</a> -->
 	</div>
 </template>
 <script>

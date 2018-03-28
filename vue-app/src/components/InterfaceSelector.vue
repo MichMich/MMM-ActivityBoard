@@ -36,7 +36,7 @@ export default {
 			this.buttons = payload
 		})
 		this.$parent.$on('button_changed', payload => {
-			if ((payload.name === 'ROTARY_A' || payload.name === 'ARCADE_1') && payload.state) {
+			if (payload.name === 'ROTARY_A' && payload.state) {
 				this.checkRotation()
 			}
 		})

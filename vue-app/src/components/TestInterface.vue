@@ -140,6 +140,7 @@ export default {
 		}
 	},
 	mounted () {
+		this.$parent.$off()
 		this.$parent.$on('buttons', payload => {
 			this.buttons = payload
 			this.addLog('buttons', payload)
