@@ -23,6 +23,7 @@ const SoundPlayer = {
 				}
 			} else {
 				player = new Audio(require('../assets/' + sound.file))
+				sound.player = player
 			}
 
 			player.currentTime = 0

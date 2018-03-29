@@ -122,6 +122,7 @@ export default {
 			}
 
 			if (payload.state) {
+				this.stopSound(payload.name)
 				this.playSound(payload.name)
 			} else {
 				if (this.sounds[payload.name] && this.sounds[payload.name].loop) {
@@ -143,7 +144,11 @@ export default {
 	}
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+	#app {
+		background-image: url('../assets/enzo-images/bg.jpg');
+		background-size: cover;
+	}
 	.kids-interface {
 		text-align: center;
 	}
@@ -155,6 +160,7 @@ export default {
 		border-radius: 1000px;
 		margin: 20px;
 		margin-top: 50px;
+		box-shadow: 0px 5px 3px 2px rgba(0, 0, 0, 0.5);
 	}
 	.image-holder:after {
 		content: "";
@@ -165,6 +171,8 @@ export default {
 		margin-top: 60px;
 		font-size: 40px;
 		color: white;
+		font-weight: bold;
+		text-shadow: 0px 5px rgba(0, 0, 0, 0.5);
 	}
 	.actions {
 		margin: 60px 20px;
@@ -173,7 +181,8 @@ export default {
 		.action {
 			width: 100px;
 			height: 100px;
-			background-color: #333;
+			background-color: rgba(50,50,50,0.5);
+			box-shadow: 0px 5px 3px 2px rgba(0, 0, 0, 0.5);
 			border-radius: 100px;
 			img {
 				width: 50px;
