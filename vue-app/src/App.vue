@@ -11,8 +11,11 @@ import InterfaceSelector from './components/InterfaceSelector'
 import TestInterface from './components/TestInterface'
 import KidsInterface from './components/KidsInterface'
 
+import SoundPlayer from './mixins/SoundPlayer'
+
 export default {
 	name: 'App',
+	mixins: [SoundPlayer],
 	components: {
 		InterfaceSelector,
 		TestInterface,
@@ -21,6 +24,12 @@ export default {
 	data () {
 		return {
 			buttons: {},
+			sounds: {
+				'no-plop': {
+					file: 'no-plop.wav',
+					loop: true
+				}
+			},
 			showInterfaceSelector: false,
 			activeInterface: 2,
 			interfaces: [
@@ -41,6 +50,8 @@ export default {
 		}
 	},
 	mounted () {
+		this.playSound('no-plop')
+
 		this.$parent.$on('buttons', payload => {
 			this.buttons = payload
 			this.$emit('buttons', payload)
